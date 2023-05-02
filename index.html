@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<head>
+    <title>Temp</title>
+    <link href="styles.css" rel="stylesheet"/>
+    <link href="https://fonts.cdnfonts.com/css/ocr-a-extended" rel="stylesheet"/>
+</head>
+<body>
+    <div id="buttons">
+        <button id="digital" onclick="bruh(1)">DIGITAL</button>
+        <button id="traditional" class="inactive" onclick="bruh(2)">TRADITIONAL</button>
+    </div>
+    <div id="gallery"></div>
+    <div id="bottombar">
+        <a href="index.html" id="x" class="active">GALLERY</a>
+        <a href="about.html" id="y">About Me</a>
+        <a href="contact.html" id="z">Contact</a>
+    </div>
+    <div id="modal" hidden>
+        <a id="modalhref" href="" target="_blank">
+            <img id="modalimg" src=""/>
+        </a>
+        <div id="details">
+            <close>X</close>
+            <h1>nn</h1>
+            <h2></h2>
+            <h3></h3>
+            <a id="timelapse" href="">TIMELAPSE</a>
+        </div>
+    </div>
+</body>
+<script>
+    d = document.getElementById("digital")
+    t = document.getElementById("traditional")
+    w = window.innerWidth
+    h =  window.innerHeight
+    g = document.getElementById("gallery")
+    m = document.getElementById("modal")
+    mh = document.getElementById("modalhref")
+    mi = document.getElementById("modalimg")
+    details = document.getElementById("details")
+    h1 = document.getElementsByTagName("h1")[0]
+    h2 = document.getElementsByTagName("h2")[0]
+    h3 = document.getElementsByTagName("h3")[0]
+    timelapse = document.getElementById("timelapse")
+    dl = [
+        '0.png',
+        '1.png',
+        '2.png',
+        '3.png',
+        '4.png',
+        '5.png',
+        '6.png',
+        '7.png',
+        '8.png',
+        '9.png'
+    ]
+    dld = [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+    ]
+
+    function initial(){
+        d = document.getElementById("digital")
+        t = document.getElementById("traditional")
+        w = window.innerWidth
+        h =  window.innerHeight
+        g = document.getElementById("gallery")
+        m = document.getElementById("modal")
+        mh = document.getElementById("modalhref")
+        mi = document.getElementById("modalimg")
+        details = document.getElementById("details")
+        h1 = document.getElementsByTagName("h1")[0]
+        h2 = document.getElementsByTagName("h2")[0]
+        h3 = document.getElementsByTagName("h3")[0]
+        timelapse = document.getElementById("timelapse")
+        dl = [
+            '0.png',
+            '1.png',
+            '2.png',
+            '3.png',
+            '4.png',
+            '5.png',
+            '6.png',
+            '7.png',
+            '8.png',
+            '9.png'
+        ]
+    }
+    window.addEventListener('load', initial)
+
+    /*
+    function reposition(){
+    }
+    window.addEventListener('load', reposition)
+    window.addEventListener('resize', reposition)
+    */
+
+    function bruh(x){
+        if(x==1){
+            if(d.className=='inactive'){
+                d.className = ''
+                t.className = 'inactive'
+            }
+        }else{
+            if(t.className=='inactive'){
+                t.className = ''
+                d.className = 'inactive'
+            }
+        }
+    }
+
+    function gallery(medium){
+        dir = medium+"/"
+        if(medium!="traditional"){
+            list = dl
+        }else{
+            list = tl
+        }
+        for(i=0;i<list.length;i++){
+            image = document.createElement('img');
+            image.src = dir+list[i]
+            image.setAttribute("onclick","modal('"+medium+"','"+list[i]+"')")
+            g.appendChild(image)
+        }
+    }
+    window.addEventListener('load', gallery("digital"))
+
+    function modal(med,name){
+        m.removeAttribute("hidden")
+        if(med="digital"){
+            data = dld
+        }else{
+            data = tld
+        }
+        idx = data.indexOf(name)
+        console.log(idx,data)
+        mh.href = med+"/"+name
+        mi.src = med+"/"+name
+
+    }
+</script>
+</html>

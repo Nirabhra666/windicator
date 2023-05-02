@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+    <title>Temp</title>
+    <link href="styles.css" rel="stylesheet" >
+    <link href="https://fonts.cdnfonts.com/css/ocr-a-extended" rel="stylesheet">
+</head>
+<body>
+    <div id="heading">
+        <button id="aboutmebutton">ABOUT ME</button>
+    </div>
+    <div id="main">
+        <age id="age"></age>
+    </div>
+    <div id="bottombar">
+        <a href="about.html" id="y" class="active">About Me</a>
+        <a href="index.html" id="x">GALLERY</a>
+        <a href="contact.html" id="z">Contact</a>
+    </div>
+</body>
+<script>
+    function calcage(){
+        time = new Date()
+        age = time.getFullYear() - 2006
+        if(time.getMonth()==1 && time.getDate() < 27){
+            age -= 1
+        }
+        document.getElementById("age").innerText = age
+    }
+    window.addEventListener('load', calcage)
+</script>
+</html>
